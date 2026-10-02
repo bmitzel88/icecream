@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+}
+
+main{
+    background-color: lightblue;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+}
+
+legend{
+    color: darkcyan;
+    font-variant: small-caps;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+button{
+    border: none;
+    background-color: lightgreen;
+    border-color: darkgreen;
+    padding: .5rem .75rem;
+    border-radius: .25rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1 rem;
+}
+
+#pinfo input{
+    width: 100%;
+
+}
+
+select {
+    width: 100%;
+}
+
+#comment{
+    width: 100%;
+    resize: none;
+}
+
+button{
+    width: 100%;
+    margin: 0 auto;
+}
+
+#icecream{
+    display: block;
+    width: 300px;
+    position: absolute;
+    right: 0.5%;
+    top: 40%;
+
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Ice Cream Order</title>
+</head>
+<body>
+    <!-- Ice Cream Image -->
+        <img src="images/icecreamresized.png" alt="Ice Cream Cone" id="icecream">
+    <main>
+        <h1>Ice Cream Order Form</h1>
+        <form>
+        <fieldset id = "pinfo">
+            <legend>Personal Information</legend>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+        </fieldset>
+
+        <fieldset>
+            <legend>Order details</legend>
+            <p>Choose your flavor: </p>
+            <select id = "flavor" name = "flavor">
+                <option value = "none">-- Select a flavor --</option>
+                <option value = "vanilla">Vanilla</option>
+                <option value = "chocolate">Chocolate</option>
+                <option value = "taro">Taro</option>
+            </select>
+            <p>Choose your cone: </p>
+            <input type="radio" id="waffle" name="cone" value="waffle">Waffle Cone</input>
+            <input type="radio" id="sugar" name="cone" value="sugar">Sugar Cone</input>
+            <input type="radio" id="cup" name="cone" value="cup">Cup</input>
+
+            <p>Toppings: </p>
+            <input type="checkbox" id="sprinkles" name="topping[]" value="sprinkles">Sprinkles</input>
+            <input type="checkbox" id="nuts" name="topping[]" value="nuts">Nuts</input>
+            <input type="checkbox" id="cherry" name="topping[]" value="cherry">Cherry</input>
+            <input type="checkbox" id="whipped" name="topping[]" value="whipped">Whipped Cream</input>
+            <br>
+            <label for="comment">Additional Comments</label>
+            <br>
+            <textarea rows="5" id="comment" name="comment"></textarea>
+            <br>
+        </fieldset>
+        <button type="submit" id="order-button">Submit Order</button>
+        </form>
+    </main>
+</body>
+</html>
