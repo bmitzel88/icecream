@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "node": "^26.11.1"
+  },
+  "name": "icecream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmitzel88/icecream.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/bmitzel88/icecream/issues"
+  },
+  "homepage": "https://github.com/bmitzel88/icecream#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
