@@ -16,19 +16,13 @@ document.getElementById("icecream-form").onsubmit = () => {
         document.getElementById("err-email").style.display = "block";
         isValid = false
     }
-
-    let flavorSelected = false;
-    let flavorButtons = document.getElementsByName("flavor");
-    for (i=0; i < flavorButtons.length; i++) {
-        if (flavorButtons[i].checked) {
-            flavorSelected = true;
-        }
-    }
-
-    if (!flavorSelected) {
+    
+    let flavorSelected = document.getElementById("flavor").value;
+    if (flavorSelected === "none") {
         document.getElementById("err-flavor").style.display = "block";
         isValid = false;
     }
+
 
     let coneSelected = false;
     let coneButtons = document.getElementsByName("cone");
