@@ -39,6 +39,10 @@ app.post('/submit-order', (req, res) =>{
     res.render('confirm', { order });
 });
 
+app.get('/admin', (req, res) =>{
+    res.render('admin', {orders});
+});
+
 
 // Start server on designated port
 app.listen(PORT, () => {
