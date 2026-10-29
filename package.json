@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "ejs": "^7.0.2",
     "express": "^5.2.1",
     "node": "^26.11.1"
   },
@@ -24,5 +25,8 @@
   "homepage": "https://github.com/bmitzel88/icecream#readme",
   "devDependencies": {
     "nodemon": "^3.1.14"
+  },
+  "allowScripts": {
+    "ejs@7.0.2": true
   }
 }
