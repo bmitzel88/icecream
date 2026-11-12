@@ -1,5 +1,17 @@
-// Import the express module
+// Import the required modules
+import mysql2 from 'mysql2';
 import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Create a connection pool for sql
+const pool = mysql2.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
+}).promise();
 
 // Create an instance
 const app = express();
@@ -23,6 +35,18 @@ app.set('view engine', 'ejs');
 // Define a default route ("/")
 app.get('/', (req, res) =>{
     res.render('home');
+});
+
+app.get('/db-test', async(req, res) => {
+    try {
+        const [orders] = await pool.query('SELECT * FROM orders');
+        res.send(orders);
+        // Remember order[0] or [order] has information we see, order[1] has metadata
+    } catch(err) {
+        console.error('Database error ', err);
+        res.status(500).send('Database error occurred.')
+    }
+    
 });
 
 app.post('/submit-order', (req, res) =>{
