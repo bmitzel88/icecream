@@ -31,11 +31,11 @@
         <tbody>
             <% orders.forEach(order => { %>
                 <tr>
-                    <td><%= order.name %></td>
+                    <td><%= order.customer %></td>
                     <td><%= order.email %></td>
                     <td><%= order.flavor %></td>
                     <td><%= order.cone %></td>
-                    <td><%= order.topping %></td>
+                    <td><%= order.toppings %></td>
                     <td><%= order.comment %></td>
                     <td><%= order.timestamp.toLocaleString() %></td>
                 </tr>

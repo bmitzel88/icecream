@@ -65,7 +65,7 @@ app.post('/submit-order', (req, res) =>{
 
 // Display all orders
 
-app.get('/admin', async (req, res) => {
+app.get('/admin', async(req, res) => {
     try {
         // Fetch all orders from database, most recent first
         const [orders] = await pool.query(`SELECT * FROM orders
