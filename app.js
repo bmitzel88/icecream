@@ -50,13 +50,12 @@ app.get("/", (req, res) => {
 app.post("/submit-order", async (req, res) => {
   try {
     const order = req.body;
-    order["timestamp"] = new Date();
 
     console.log(order);
 
     // Convert toppings array to a comma separated string
-    order.toppings = Array.isArray(order.topping)
-      ? order.topping.join(", ")
+    order.toppings = Array.isArray(order.toppings)
+      ? order.toppings.join(", ")
       : "";
 
     // SQL INSERT query with placeholders to prevent SQL injection
@@ -64,13 +63,14 @@ app.post("/submit-order", async (req, res) => {
     VALUES (?, ?, ?, ?, ?, ?);`;
 
     const params = [
-      order.name,
+      order.customer,
       order.email,
       order.flavor,
       order.cone,
       order.toppings,
       order.comment ?? null,
     ];
+
     const [result] = await pool.execute(sql, params);
 
     order.id = result.insertId;
