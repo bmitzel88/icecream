@@ -1,6 +1,7 @@
 // Import the required modules
 import mysql2 from "mysql2";
 import express from "express";
+import session from 'express-session';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -11,7 +12,7 @@ const pool = mysql2
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
+    port: process.env.DB_PORT
   })
   .promise();
 
@@ -27,6 +28,14 @@ app.use(express.static("public"));
 // App middleware to allow the app to parse form data
 // Access form data through req.body
 app.use(express.urlencoded({ extended: true }));
+
+// Session middleware : lets server remember requests
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 } // 1 hour length
+}));
 
 // Set view engine to EJS
 app.set("view engine", "ejs");
