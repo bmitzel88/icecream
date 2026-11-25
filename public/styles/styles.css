@@ -18,7 +18,7 @@ legend {
 
 .button {
   border: none;
-  background-color: lightgreen;
+  background-color: rgb(78, 175, 78);
   border-color: darkgreen;
   padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
@@ -26,7 +26,7 @@ legend {
   color: white;
   font-size: 1 rem;
   width: 100%;
-  margin: 0 auto;
+  margin: 0.75rem auto;
 }
 
 #pinfo input {

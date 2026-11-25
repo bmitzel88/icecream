@@ -25,15 +25,6 @@ const PORT = 3001;
 // Enable static file serving
 app.use(express.static("public"));
 
-// Middleware to allow only logged in users through
-function requireLogin(req, res, next) {
-  if (req.session.loggedIn) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-}
-
 // App middleware to allow the app to parse form data
 // Access form data through req.body
 app.use(express.urlencoded({ extended: true }));
@@ -61,11 +52,11 @@ function requireLogin(req, res, next) {
 app.set("view engine", "ejs");
 
 // TEMP: remove in part 4
-app.get('/session-test', (req, res) => {
-  req.session.views = (req.session.views || 0) + 1;
-  res.send(`Visits: ${req.session.views}<br>
-    Logged in: ${req.session.loggedIn === true}`);
-});
+// app.get('/session-test', (req, res) => {
+//   req.session.views = (req.session.views || 0) + 1;
+//   res.send(`Visits: ${req.session.views}<br>
+//     Logged in: ${req.session.loggedIn === true}`);
+// });
 
 // Define a default route ("/")
 app.get("/", (req, res) => {
