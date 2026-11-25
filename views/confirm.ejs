@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirm</title>
+  <%- include('partials/head', {title: "Confirm"}) %>
 </head>
 
 <body>
-  <h1>Thank you for your order, <%= order.customer %>!</h1>
+  <main>
+    <h1>Thank you for your order, <%= order.customer %>!</h1>
 
-  <h2>Order Details</h2>
-  <p>Email: <%= order.email%></p>
-  <p>Flavor: <%= order.flavor%></p>
-  <p>Cone: <%= order.cone%></p>
-  <p>Toppings: <%= order.toppings%></p>
-  <p>Comment: <%= order.comment%></p>
+    <h2>Order Details</h2>
+    <p>Email: <%= order.email%></p>
+    <p>Flavor: <%= order.flavor%></p>
+    <p>Cone: <%= order.cone%></p>
+    <p>Toppings: <%= order.toppings%></p>
+    <p>Comment: <%= order.comment%></p>
+  </main>
 </body>
 
 </html>

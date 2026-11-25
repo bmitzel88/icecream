@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orders</title>
+  <%- include('partials/head', {title: "Admin"}) %>
 
   <!-- Must come first -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -15,37 +13,41 @@
 </head>
 
 <body>
-  <h1>View Orders</h1>
+  <main>
+    <h1>View Orders</h1>
 
-  <table id="order-table" class="display">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Flavor</th>
-        <th>Cone</th>
-        <th>Toppings</th>
-        <th>Comment</th>
-        <th>Date and Time</th>
-      </tr>
-    </thead>
+    <table id="order-table" class="display">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Flavor</th>
+          <th>Cone</th>
+          <th>Toppings</th>
+          <th>Comment</th>
+          <th>Date and Time</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <% orders.forEach(order => { %>
-      <tr>
-        <td><%= order.customer %></td>
-        <td><%= order.email %></td>
-        <td><%= order.flavor %></td>
-        <td><%= order.cone %></td>
-        <td><%= order.toppings %></td>
-        <td><%= order.comment %></td>
-        <td><%= order.timestamp.toLocaleString() %></td>
-      </tr>
-      <% }); %>
+      <tbody>
+        <% orders.forEach(order => { %>
+        <tr>
+          <td><%= order.customer %></td>
+          <td><%= order.email %></td>
+          <td><%= order.flavor %></td>
+          <td><%= order.cone %></td>
+          <td><%= order.toppings %></td>
+          <td><%= order.comment %></td>
+          <td><%= order.timestamp.toLocaleString() %></td>
+        </tr>
+        <% }); %>
 
-    </tbody>
+      </tbody>
 
-  </table>
+    </table>
+
+    <a class="button" href="/logout">Logout</a>
+  </main>
 
   <script>
     new DataTable('#order-table');

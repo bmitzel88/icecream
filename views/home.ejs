@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/styles.css">
-  <title>Ice Cream Order</title>
-
+  <!-- General Header -->
+  <%- include('partials/head', {title: "Ice Cream Order"}) %>
+  
+  <!-- Scripts -->
   <script src="js/ice-cream.js" defer></script>
 </head>
 
@@ -58,7 +57,7 @@
         <textarea rows="5" id="comment" name="comment"></textarea>
         <br>
       </fieldset>
-      <button type="submit" id="order-button">Submit Order</button>
+      <button type="submit" class="button">Submit Order</button>
     </form>
   </main>
 </body>
