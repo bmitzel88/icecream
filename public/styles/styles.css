@@ -16,7 +16,7 @@ legend {
   width: 100%;
 }
 
-button {
+.button {
   border: none;
   background-color: lightgreen;
   border-color: darkgreen;
@@ -25,6 +25,8 @@ button {
   text-decoration: none;
   color: white;
   font-size: 1 rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #pinfo input {
@@ -38,11 +40,6 @@ select {
 #comment {
   width: 100%;
   resize: none;
-}
-
-button {
-  width: 100%;
-  margin: 0 auto;
 }
 
 #icecream {

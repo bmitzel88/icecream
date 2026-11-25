@@ -1,7 +1,7 @@
 // Import the required modules
 import mysql2 from "mysql2";
 import express from "express";
-import session from 'express-session';
+import session from "express-session";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -12,7 +12,7 @@ const pool = mysql2
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT
+    port: process.env.DB_PORT,
   })
   .promise();
 
@@ -39,12 +39,23 @@ function requireLogin(req, res, next) {
 app.use(express.urlencoded({ extended: true }));
 
 // Session middleware : lets server remember requests
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 } // 1 hour length
-}));
+    cookie: { maxAge: 1000 * 60 * 60 }, // 1 hour length
+  }),
+);
+
+// Only let logged-in users through; send everyone else to /login
+function requireLogin(req, res, next) {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
 
 // Set view engine to EJS
 app.set("view engine", "ejs");
@@ -61,22 +72,9 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-// app.get("/db-test", async (req, res) => {
-//   try {
-//     const [orders] = await pool.query("SELECT * FROM orders");
-//     res.send(orders);
-//     // Remember order[0] or [order] has information we see, order[1] has metadata
-//   } catch (err) {
-//     console.error("Database error ", err);
-//     res.status(500).send("Database error occurred.");
-//   }
-// });
-
 app.post("/submit-order", async (req, res) => {
   try {
     const order = req.body;
-
-    console.log(order);
 
     // Convert toppings array to a comma separated string
     order.toppings = Array.isArray(order.toppings)
@@ -113,9 +111,34 @@ app.post("/submit-order", async (req, res) => {
   }
 });
 
-// Display all orders
+app.get("/login", (req, res) => {
+  res.render("login", { error: "" });
+});
 
-app.get("/admin", async (req, res) => {
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  // Compare the form values to the values in .env
+  if (
+    username === process.env.ADMIN_USER &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
+    req.session.loggedIn = true;
+    res.redirect("/admin");
+  } else {
+    res.render("login", { error: "Invalid username or password." });
+  }
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/login");
+  });
+});
+
+// Display all orders
+app.get("/admin", requireLogin, async (req, res) => {
   try {
     // Fetch all orders from database, most recent first
     const [orders] = await pool.query(`SELECT * FROM orders
